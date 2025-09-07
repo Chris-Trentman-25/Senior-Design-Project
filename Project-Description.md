@@ -1,5 +1,5 @@
 # Team Name
-Chris Trentman
+CT
 # List of Team Members
 - Chris Trentman
 # Project Topic Area
