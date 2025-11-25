@@ -4,7 +4,7 @@
 
 1. **Team Names and Project Abstract**
 
-   * [Team Names and Project Advisor](#team-names-and-project-abstract)
+   * [Team Names and Project Advisor](#team-names-and-project-advisor)
 2. **Project Description (Assignment #2)**
 
    * [Project Description](#project-description)
