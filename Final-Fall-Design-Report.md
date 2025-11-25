@@ -35,11 +35,6 @@
    * [Budget](#budget)
 10. **Appendix**
 
-    * [References & Citations](#appendix)
-    * [Code Repositories](#appendix)
-    * [Meeting Notes](#appendix)
-    * [Evidence of 45 Hours of Effort per Member](#appendix)
-
 ---
 
 ## Team Names and Project Advisor
