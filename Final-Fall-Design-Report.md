@@ -4,10 +4,10 @@
 
 1. **Team Names and Project Abstract**
 
-   * [Link to Section](#team-names-and-project-abstract)
+   * [Team Names and Project Advisor](#team-names-and-project-abstract)
 2. **Project Description (Assignment #2)**
 
-   * [Link to Section](#project-description)
+   * [Project Description](#project-description)
 3. **User Stories and Design Diagrams (Assignment #4)**
 
    * [User Stories](#user-stories)
@@ -20,19 +20,19 @@
    * [Effort Matrix](#effort-matrix)
 5. **ABET Concerns Essay (Assignment #7)**
 
-   * [Link to Section](#abet-concerns-essay)
+   * [ABET Concerns Essay](#abet-concerns-essay)
 6. **PPT Slideshow (Assignment #8)**
 
-   * [Link to Section](#ppt-slideshow)
+   * [PPT Slideshow](#ppt-slideshow)
 7. **Self-Assessment Essays (Assignment #3)**
 
-   * [Link to Section](#self-assessment-essays)
+   * [Self-Assessment Essays](#self-assessment-essays)
 8. **Professional Biographies (Assignment #1)**
 
-   * [Link to Section](#professional-biographies)
+   * [Professional Biographies](#professional-biographies)
 9. **Budget**
 
-   * [Expenses to Date / Donation Statement](#budget)
+   * [Budget](#budget)
 10. **Appendix**
 
     * [References & Citations](#appendix)
