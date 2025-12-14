@@ -1,0 +1,62 @@
+C4Context
+    title System Context diagram for Structural & Mechanical Subsystem
+    System_Boundary(StructuralAndMechanicalSubsystemBoundary, "Structural & Mechanical Subsystem Boundary") {
+        System(TowerFrameAndSupportStructure, "Tower Frame & Support Structure", "Provides the primary load-bearing structure for the system.")
+        System(GuideAndConstraintSubsystem, "Guide & Constraint Subsystem", "Constrains the mass to controlled vertical motion.")
+        System(CarriageMovingPlatformSubsystem, "Carriage / Moving Platform Subsystem", "Holds and moves the mass along the tower.")
+        System(ForceTransmissionSubsystem, "Force Transmission Subsystem", "Transfers force between the actuation system and the moving mass.")
+        System(BearingsAndFrictionManagementSubsystem, "Bearings & Friction Management Subsystem", "Minimizes mechanical losses and wear.")
+        System(LoadPathAndStructuralInterfaceSubsystem, "Load Path & Structural Interface Subsystem", "Defines how forces flow through the structure.")
+        System(MechanicalLimitsAndHardStopsSubsystem, "Mechanical Limits & Hard Stops Subsystem", "Physically limits motion to safe ranges.")
+        System(VibrationAndStabilityManagementSubsystem, "Vibration & Stability Management Subsystem", "Controls vibration and improves system stability.")
+        System(EnclosureAndGuardingSubsystem, "Enclosure & Guarding Subsystem / Safety Interface","Protects users from moving parts.")
+        System(AllSubsystems, "All Subsystems", "Represents every subsystem.")
+    }
+    System_Ext(MassSubsystem, "Mass / Energy Storage Medium Subsystem", "Stores energy as gravitational potential energy.")
+    System_Ext(SensingAndInstrumentationSubsystem, "Sensing & Instrumentation Subsystem", "Provides feedback for control, safety, and performance analysis.")
+    BiRel(TowerFrameAndSupportStructure, GuideAndConstraintSubsystem, "Guides are rigidly mounted to the frame<br/>
+        Frame alignment directly affects guide straightness<br/>
+        Frame absorbs lateral and vertical reaction forces")
+    BiRel(GuideAndConstraintSubsystem, BearingsAndFrictionManagementSubsystem, "Bearings roll or slide along guide surfaces<br/>
+        Surface finish and lubrication affect efficiency<br/>
+        Bearing preload influences friction and stability")
+    BiRel(BearingsAndFrictionManagementSubsystem, CarriageMovingPlatformSubsystem, "Bearings are mounted to the carriage<br/>
+        Carriage transmits load through bearings into guides<br/>
+        Bearing spacing affects moment resistance")
+    BiRel(CarriageMovingPlatformSubsystem, MassSubsystem, "Mass is rigidly attached to carriage<br/>
+        Carriage distributes mass load evenly<br/>
+        Center-of-mass alignment minimizes binding")
+    BiRel(CarriageMovingPlatformSubsystem, ForceTransmissionSubsystem, "Cable, belt, or chain attaches to carriage<br/>
+        Transmits lifting and lowering forces<br/>
+        Must accommodate dynamic loading")
+    BiRel(ForceTransmissionSubsystem, TowerFrameAndSupportStructure, "Pulleys and winch mounts attach to frame<br/>
+        Frame resists tension and torque reactions<br/>
+        Load paths return force to base")
+    Rel(LoadPathAndStructuralInterfaceSubsystem, AllSubsystems, "Defines how forces propagate through the system<br/>
+        Prevents stress concentration<br/>
+        Ensures predictable deflection")
+    Rel(MechanicalLimitsAndHardStopsSubsystem, CarriageMovingPlatformSubsystem, "Hard stops physically halt carriage motion")
+    Rel(TowerFrameAndSupportStructure, MechanicalLimitsAndHardStopsSubsystem, "Energy absorbed through bumpers or frame")
+    Rel(MechanicalLimitsAndHardStopsSubsystem, GuideAndConstraintSubsystem, "Protects guides") 
+    Rel(MechanicalLimitsAndHardStopsSubsystem, ForceTransmissionSubsystem, "Protects transmission components")
+    Rel(VibrationAndStabilityManagementSubsystem, TowerFrameAndSupportStructure, "Damping elements absorb oscillations<br/>
+        Base isolation reduces transmitted vibration")
+    Rel(VibrationAndStabilityManagementSubsystem, SensingAndInstrumentationSubsystem, "Improves system longevity and sensor accuracy")
+    Rel(EnclosureAndGuardingSubsystem, TowerFrameAndSupportStructure, "Guarding mounts to frame<br/>
+        Does not carry operational load<br/>
+        Maintains clearance from moving parts")
+    UpdateRelStyle(TowerFrameAndSupportStructure, GuideAndConstraintSubsystem, $textColor="red", $lineColor="red", $offsetX="0")
+    UpdateRelStyle(GuideAndConstraintSubsystem, BearingsAndFrictionManagementSubsystem, $textColor="orange", $lineColor="orange", $offsetX="350")
+    UpdateRelStyle(BearingsAndFrictionManagementSubsystem, CarriageMovingPlatformSubsystem, $textColor="green", $lineColor="green", $offsetX="350")
+    UpdateRelStyle(CarriageMovingPlatformSubsystem, MassSubsystem, $textColor="blue", $lineColor="blue", $offsetX="300")
+    UpdateRelStyle(CarriageMovingPlatformSubsystem, ForceTransmissionSubsystem, $textColor="indigo", $lineColor="indigo", $offsetX="0")
+    UpdateRelStyle(ForceTransmissionSubsystem, TowerFrameAndSupportStructure, $textColor="violet", $lineColor="violet", $offsetX="0")
+    UpdateRelStyle(LoadPathAndStructuralInterfaceSubsystem, AllSubsystems, $textColor="black", $lineColor="black", $offsetX="300")
+    UpdateRelStyle(MechanicalLimitsAndHardStopsSubsystem, CarriageMovingPlatformSubsystem, $textColor="gray", $lineColor="gray", $offsetX="250")
+    UpdateRelStyle(TowerFrameAndSupportStructure, MechanicalLimitsAndHardStopsSubsystem, $textColor="brown", $lineColor="brown", $offsetX="-550")
+    UpdateRelStyle(MechanicalLimitsAndHardStopsSubsystem, GuideAndConstraintSubsystem, $textColor="red", $lineColor="red", $offsetX="350")
+    UpdateRelStyle(MechanicalLimitsAndHardStopsSubsystem, ForceTransmissionSubsystem, $textColor="orange", $lineColor="orange", $offsetX="0")
+    UpdateRelStyle(VibrationAndStabilityManagementSubsystem, TowerFrameAndSupportStructure, $textColor="green", $lineColor="green", $offsetX="0")
+    UpdateRelStyle(VibrationAndStabilityManagementSubsystem, SensingAndInstrumentationSubsystem, $textColor="blue", $lineColor="blue", $offsetX="0")
+    UpdateRelStyle(EnclosureAndGuardingSubsystem, TowerFrameAndSupportStructure, $textColor="indigo", $lineColor="indigo", $offsetX="-500")
+    UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="1")
