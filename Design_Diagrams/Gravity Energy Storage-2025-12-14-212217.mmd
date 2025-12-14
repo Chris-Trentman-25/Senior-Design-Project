@@ -1,0 +1,48 @@
+C4Context
+    title System Context diagram for Prototype-Scale Tower Gravity-Based Energy Storage System
+    System_Boundary(PrototypeSizedTowerGravityBasedEnergyStorageSystemBoundary, "Prototype-Scale Tower Gravity-Based Energy Storage System Boundary") {
+        System(StructuralAndMechanicalSubsystem, "Structural & Mechanical Subsystem", "Physically supports and guides the lifted mass.")
+        System(MassSubsystem, "Mass / Energy Storage Medium Subsystem", "Stores energy as gravitational potential energy.")
+        System(LiftingAndActuationSubsystem, "Lifting & Actuation Subsystem", "Converts electrical energy into mechanical lifting motion.")
+        System(PowerGenerationAndMechanicalToElectricalConversionSubsystem, "Power Generation & Mechanical-to-Electrical Conversion Subsystem", "Converts falling mass motion back into electrical energy.")
+        System(PowerElectronicsAndEnergyConditioningSubsystem, "Power Electronics & Energy Conditioning Subsystem", "Conditions electrical power for storage or load use.")
+        System(ControlAndAutomationSubsystem, "Control & Automation Subsystem", "Coordinates charging, discharging, and system behavior.")
+        System(SensingAndInstrumentationSubsystem, "Sensing & Instrumentation Subsystem", "Provides feedback for control, safety, and performance analysis.")
+        System(SafetyAndProtectionSubsystem, "Safety & Protection Subsystem","Prevents damage and injury.")
+        System(UserInterfaceAndDataLoggingSubsystem, "User Interface & Data Logging Subsystem", "Allows interaction and performance visualization.")
+    }
+    Rel(StructuralAndMechanicalSubsystem, MassSubsystem, "Structure supports the mass and constrains its motion<br/>
+        Guides ensure vertical travel and minimize friction<br/>
+        Hard stops physically limit travel range")
+    Rel(LiftingAndActuationSubsystem, StructuralAndMechanicalSubsystem, "Motor torque is transferred through gears/winch to lift mass<br/>
+        Structure absorbs reaction forces and vibrations")
+    Rel(PowerElectronicsAndEnergyConditioningSubsystem, LiftingAndActuationSubsystem, "Power electronics supply controlled voltage/current to motor<br/>
+        Enables direction control / lift vs. descend<br/>
+        Provides braking or regenerative capability")
+    BiRel(LiftingAndActuationSubsystem, PowerGenerationAndMechanicalToElectricalConversionSubsystem, "Same motor may act as generator during descent<br/>
+        Mechanical coupling transmits rotational energy<br/>
+        Control system determines operating mode")
+    Rel(PowerGenerationAndMechanicalToElectricalConversionSubsystem, PowerElectronicsAndEnergyConditioningSubsystem, "Generated power is rectified and conditioned<br/>
+        Voltage/current regulated for safe use or storage<br/>
+        Excess power dissipated or buffered")
+    BiRel(ControlAndAutomationSubsystem, PowerElectronicsAndEnergyConditioningSubsystem, "Control system sets motor speed and direction<br/>
+        Receives voltage/current feedback<br/>
+        Enforces operating limits")
+    Rel(SensingAndInstrumentationSubsystem, ControlAndAutomationSubsystem, "Sensors provide real-time system state<br/>
+        Control algorithms adjust behavior accordingly")
+    Rel(SafetyAndProtectionSubsystem, ControlAndAutomationSubsystem, "Safety conditions override normal control<br/>
+        Emergency stop disables actuation<br/>
+        Software limits prevent unsafe motion")
+    BiRel(UserInterfaceAndDataLoggingSubsystem, ControlAndAutomationSubsystem, "User commands start/stop charge or discharge<br/>
+        Displays system state and performance metrics<br/>
+        Data logged for analysis")
+    UpdateRelStyle(StructuralAndMechanicalSubsystem, MassSubsystem, $textColor="black", $lineColor="black", $offsetX="0")
+    UpdateRelStyle(LiftingAndActuationSubsystem, StructuralAndMechanicalSubsystem, $textColor="red", $lineColor="red" $offsetX="300")
+    UpdateRelStyle(PowerElectronicsAndEnergyConditioningSubsystem, LiftingAndActuationSubsystem, $textColor="black", $lineColor="black" $offsetX="450")
+    UpdateRelStyle(LiftingAndActuationSubsystem, PowerGenerationAndMechanicalToElectricalConversionSubsystem, $textColor="red", $lineColor="red", $offsetX="0")
+    UpdateRelStyle(PowerGenerationAndMechanicalToElectricalConversionSubsystem, PowerElectronicsAndEnergyConditioningSubsystem, $textColor="red", $lineColor="red", $offsetX="0")
+    UpdateRelStyle(ControlAndAutomationSubsystem, PowerElectronicsAndEnergyConditioningSubsystem, $textColor="black", $lineColor="black", $offsetX="0")
+    UpdateRelStyle(SensingAndInstrumentationSubsystem, ControlAndAutomationSubsystem, $textColor="red", $lineColor="red", $offsetX="0")
+    UpdateRelStyle(SafetyAndProtectionSubsystem, ControlAndAutomationSubsystem, $textColor="black", $lineColor="black", $offsetX="350")
+    UpdateRelStyle(UserInterfaceAndDataLoggingSubsystem, ControlAndAutomationSubsystem, $textColor="red", $lineColor="red", $offsetX="0")
+    UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="1")
