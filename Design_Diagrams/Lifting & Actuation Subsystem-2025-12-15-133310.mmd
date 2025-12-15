@@ -1,0 +1,55 @@
+C4Context
+    title System Context diagram for Lifting & Actuation Subsystem
+    System_Boundary(LiftingAndActuationSubsystemBoundary, "Lifting & Actuation Subsystem Boundary") {
+        System(PrimeMoverSubsystem, "Prime Mover Subsystem", "Generates mechanical rotational motion.")
+        System(TransmissionAndSpeedReductionSubsystem, "Transmission & Speed Reduction Subsystem", "Matches motor output to lifting requirements.")
+        System(LiftingMechanismSubsystem, "Lifting Mechanism Subsystem", "Converts rotational motion into linear vertical motion.")
+        System(BrakingAndLoadHoldingSubsystem, "Braking & Load-Holding Subsystem", "Prevents uncontrolled descent and holds mass at height.")
+        System(MechanicalInterfaceSubsystem, "Mechanical Interface Subsystem", "Interfaces actuation hardware with structure and mass.")
+        System(RegenerativeOperationInterfaceSubsystem, "Regenerative Operation Interface Subsystem", "Enables energy recovery during descent.")
+        System(ActuationMonitoringSubsystem, "Actuation Monitoring Subsystem / Interface to Sensors", "Provides local feedback for safe and efficient operation.")
+    }
+    System_Ext(StructuralAndMechanicalSubsystem, "Structural & Mechanical Subsystem", "Physically supports and guides the lifted mass.")
+    BiRel(PrimeMoverSubsystem, TransmissionAndSpeedReductionSubsystem, "Motor provides rotational torque and speed<br/>
+        Transmission reduces speed and increases torque<br/>
+        Transmission reflects load torque back to motor<br/>
+        Back-drivability enables regenerative operation")
+    Rel(TransmissionAndSpeedReductionSubsystem, LiftingMechanismSubsystem, "Rotational output drives drum, pulley, or chain<br/>
+        Torque is converted into linear lifting force<br/>
+        Efficiency losses occur at this interface")
+    BiRel(LiftingMechanismSubsystem, MechanicalInterfaceSubsystem, "Lifting element connects to carriage or hook<br/>
+        Tensile loads are transferred to the structure<br/>
+        Alignment affects wear and friction")
+    BiRel(MechanicalInterfaceSubsystem, StructuralAndMechanicalSubsystem, "Actuation loads are reacted by the tower structure<br/>
+        Mounts prevent movement and misalignment<br/>
+        Vibration is transmitted and damped")
+    Rel(BrakingAndLoadHoldingSubsystem, PrimeMoverSubsystem, "Brake resists motion during holding or emergency stop<br/>
+        Brake may act directly on motor<br/>
+        Electrical braking supplements mechanical braking<br/>
+        Engages automatically during power loss")
+    Rel(BrakingAndLoadHoldingSubsystem, TransmissionAndSpeedReductionSubsystem, "Brake resists motion during holding or emergency stop<br/>
+        Brake may act directly on shaft<br/>
+        Electrical braking supplements mechanical braking<br/>
+        Engages automatically during power loss")
+    BiRel(RegenerativeOperationInterfaceSubsystem, PrimeMoverSubsystem, "Descending mass back-drives motor<br/>
+        Motor operates as generator<br/>
+        Mechanical energy converted to electrical energy<br/>
+        Control system regulates descent speed")
+    BiRel(ActuationMonitoringSubsystem, PrimeMoverSubsystem, "Motor current used to infer torque<br/>
+        Feedback used for closed-loop control")
+    BiRel(ActuationMonitoringSubsystem, TransmissionAndSpeedReductionSubsystem, "Encoders measure shaft speed and position<br/>
+        Feedback used for closed-loop control")
+    BiRel(ActuationMonitoringSubsystem, BrakingAndLoadHoldingSubsystem, "Confirms brake engagement<br/>
+        Detects abnormal motion during hold<br/>
+        Triggers fault or emergency stop")
+    UpdateRelStyle(PrimeMoverSubsystem, TransmissionAndSpeedReductionSubsystem, $textColor="red", $lineColor="red", $offsetX="0")
+    UpdateRelStyle(TransmissionAndSpeedReductionSubsystem, LiftingMechanismSubsystem, $textColor="orange", $lineColor="orange" $offsetX="350")
+    UpdateRelStyle(LiftingMechanismSubsystem, MechanicalInterfaceSubsystem, $textColor="green", $lineColor="green" $offsetX="250")
+    UpdateRelStyle(MechanicalInterfaceSubsystem, StructuralAndMechanicalSubsystem, $textColor="blue", $lineColor="blue", $offsetX="300")
+    UpdateRelStyle(BrakingAndLoadHoldingSubsystem, PrimeMoverSubsystem, $textColor="indigo", $lineColor="indigo", $offsetX="0")
+    UpdateRelStyle(BrakingAndLoadHoldingSubsystem, TransmissionAndSpeedReductionSubsystem, $textColor="violet", $lineColor="violet", $offsetX="200")
+    UpdateRelStyle(RegenerativeOperationInterfaceSubsystem, PrimeMoverSubsystem, $textColor="black", $lineColor="black", $offsetX="0")
+    UpdateRelStyle(ActuationMonitoringSubsystem, PrimeMoverSubsystem, $textColor="gray", $lineColor="gray", $offsetX="-475")
+    UpdateRelStyle(ActuationMonitoringSubsystem, TransmissionAndSpeedReductionSubsystem, $textColor="brown", $lineColor="brown", $offsetX="0")
+    UpdateRelStyle(ActuationMonitoringSubsystem, BrakingAndLoadHoldingSubsystem, $textColor="red", $lineColor="red", $offsetX="0")
+    UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="1")
