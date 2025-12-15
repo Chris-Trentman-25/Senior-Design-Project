@@ -1,0 +1,40 @@
+C4Context
+    title System Context Diagram for Mass (Energy Storage Medium) Subsystem
+    System_Boundary(MassSubsystemBoundary,"Mass / Energy Storage Medium Subsystem Boundary") {
+        System(EnergyStorageMassElements, "Energy Storage Mass Elements", "Provide the physical mass that stores energy.")
+        System(MassSupportAndAttachmentSubsystem, "Mass Support & Attachment Subsystem", "Securely connect the mass to the lifting mechanism.")
+        System(ModularityAndScalabilitySubsystem, "Modularity & Scalability Subsystem", "Allow testing at different energy levels.")
+        System(EnergyAccountingAndCharacterizationSubsystem, "Energy Accounting & Characterization Subsystem", "Quantify stored energy and system performance.")
+        System(SafetyAndContainmentSubsystem, "Safety & Containment Subsystem", "Prevent mass detachment or uncontrolled motion.")
+        System(InterfaceSubsystem, "Interface Subsystem", "Define clean interfaces to other subsystems.")
+        System(AllMassSubsystems, "All Mass Subsystems", "Represents all the subsystems of the mass subsystem.")
+    }
+    System_Ext(MassCarrierCarriageSubsystem, "Mass Carrier / Carriage Subsystem", "Houses the mass and enables guided vertical motion.")
+    BiRel(EnergyStorageMassElements, MassSupportAndAttachmentSubsystem, "Mass elements transfer their weight to the attachment hardware<br/>
+        Attachment hardware constrains mass movement and prevents separation<br/>
+        Load path flows from mass → fasteners → carriage")
+    BiRel(MassSupportAndAttachmentSubsystem,MassCarrierCarriageSubsystem,"Attachment hardware mounts directly to the carriage<br/>
+        Carriage bears static and dynamic loads during lift and descent<br/>
+        Forces from acceleration and braking are transmitted through this interface")
+    BiRel(MassCarrierCarriageSubsystem,ModularityAndScalabilitySubsystem,"Carriage provides standardized slots or mounting points<br/>
+        Modularity features enable mass to be added or removed<br/>
+        Configuration changes alter total stored energy")
+    BiRel(EnergyStorageMassElements,EnergyAccountingAndCharacterizationSubsystem,"Known mass values are used to calculate stored energy<br/>
+        Height reference combined with mass determines energy<br/>
+        Optional sensors validate assumed mass")
+    Rel(SafetyAndContainmentSubsystem,MassCarrierCarriageSubsystem,"Safety features constrain motion in fault conditions<br/>
+        Secondary retention prevents free-fall<br/>
+        Mechanical stops limit travel")
+    Rel(SafetyAndContainmentSubsystem,MassSupportAndAttachmentSubsystem,"Secondary cables or chains back up primary attachment<br/>
+        Safety devices activate if primary attachment fails")
+    Rel(InterfaceSubsystem,AllMassSubsystems,"Defines standardized connection points<br/>
+        Ensures compatibility with lifting and structural subsystems<br/>
+        Provides sensor mounting locations")
+    UpdateRelStyle(EnergyStorageMassElements,MassSupportAndAttachmentSubsystem, $textColor="red", $lineColor="red", $offsetX = "0")
+    UpdateRelStyle(MassSupportAndAttachmentSubsystem,MassCarrierCarriageSubsystem, $textColor="orange", $lineColor="orange", $offsetX = "200")
+    UpdateRelStyle(MassCarrierCarriageSubsystem,ModularityAndScalabilitySubsystem, $textColor="green", $lineColor="green", $offsetX = "200")
+    UpdateRelStyle(EnergyStorageMassElements,EnergyAccountingAndCharacterizationSubsystem, $textColor="blue", $lineColor="blue", $offsetX = "0")
+    UpdateRelStyle(SafetyAndContainmentSubsystem,MassCarrierCarriageSubsystem, $textColor="indigo", $lineColor="indigo", $offsetX = "250")
+    UpdateRelStyle(SafetyAndContainmentSubsystem,MassSupportAndAttachmentSubsystem, $textColor="violet", $lineColor="violet", $offsetX = "0")
+    UpdateRelStyle(InterfaceSubsystem,AllMassSubsystems, $textColor="black", $lineColor="black", $offsetX = "0")
+    UpdateLayoutConfig($c4ShapeInRow="1")
