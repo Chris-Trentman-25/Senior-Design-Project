@@ -1,0 +1,41 @@
+C4Context
+    title System Context diagram for Power Generation & Mechanical-to-Electrical Conversion Subsystem
+    System_Boundary(PowerGenerationAndMechanicalToElectricalConversionSubsystemBoundary, "Power Generation & Mechanical-to-Electrical Conversion Subsystem Boundary") {
+        System(MechanicalCouplingSubsystem, "Mechanical Coupling Subsystem", "Transfers mechanical motion from the mass/drive system to the generator.")
+        System(GeneratorElectromechanicalConversionSubsystem, "Generator / Electromechanical Conversion Subsystem", "Converts mechanical rotation into electrical energy.")
+        System(SpeedAndTorqueConditioningSubsystem, "Speed & Torque Conditioning Subsystem", "Ensures generator operates within efficient electrical and mechanical ranges.")
+        System(ElectricalRectificationSubsystem, "Electrical Rectification Subsystem", "Converts generated AC to DC.")
+        System(ElectricalOutputConditioningInterface, "Electrical Output Conditioning Interface", "Provides stable electrical output to power electronics or loads.")
+        System(ProtectionAndReliabilitySubsystem, "Protection & Reliability Subsystem", "Protects generator and electronics from damage.")
+        System(BrakingAndLoadControlSubsystem, "Braking & Load Control Subsystem", "Controls descent speed and power extraction.")
+        System(AllSubsystems, "All Subsystems", "Represents all the subsystems of the Power Generation & Mechanical-to-Electrical Conversion Subsystem")
+    }
+    BiRel(MechanicalCouplingSubsystem, SpeedAndTorqueConditioningSubsystem, "Mechanical coupling transfers rotational motion from the lifting system<br/>
+        Gears/belts modify speed and torque before reaching the generator<br/>
+        Bearings maintain alignment and reduce friction")
+    BiRel(SpeedAndTorqueConditioningSubsystem, GeneratorElectromechanicalConversionSubsystem, "Conditioned rotational motion drives the generator rotor<br/>
+        Generator back-torque reacts through the drivetrain<br/>
+        Gear ratio affects electrical output characteristics")
+    BiRel(GeneratorElectromechanicalConversionSubsystem, ElectricalRectificationSubsystem, "Generator produces AC / variable DC<br/>
+        Rectification converts output to usable DC<br/>
+        Electrical load on rectifier influences generator torque")
+    Rel(ElectricalRectificationSubsystem, ElectricalOutputConditioningInterface, "Rectified DC is filtered and stabilized<br/>
+        Voltage and current are monitored<br/>
+        Overvoltage and surge protection applied")
+    BiRel(ElectricalOutputConditioningInterface, BrakingAndLoadControlSubsystem, "Load control adjusts electrical demand<br/>
+        Changes in electrical load modulate generator torque<br/>
+        Used to regulate descent speed")
+    Rel(BrakingAndLoadControlSubsystem, GeneratorElectromechanicalConversionSubsystem, "Electrical braking produces opposing torque<br/>
+        Prevents overspeed and runaway descent<br/>
+        Enables smooth, controlled energy extraction")
+    Rel(ProtectionAndReliabilitySubsystem, AllSubsystems, "Overcurrent devices interrupt electrical flow<br/>
+        Thermal protection limits generator load<br/>
+        Mechanical overload protection prevents drivetrain damage")
+    UpdateRelStyle(MechanicalCouplingSubsystem, SpeedAndTorqueConditioningSubsystem, $textColor="red", $lineColor="red", $offsetX="250")
+    UpdateRelStyle(SpeedAndTorqueConditioningSubsystem, GeneratorElectromechanicalConversionSubsystem, $textColor="orange", $lineColor="orange", $offsetX="0")
+    UpdateRelStyle(GeneratorElectromechanicalConversionSubsystem, ElectricalRectificationSubsystem, $textColor="green", $lineColor="green", $offsetX="400")
+    UpdateRelStyle(ElectricalRectificationSubsystem, ElectricalOutputConditioningInterface, $textColor="blue", $lineColor="blue", $offsetX="350")
+    UpdateRelStyle(ElectricalOutputConditioningInterface, BrakingAndLoadControlSubsystem, $textColor="indigo", $lineColor="indigo", $offsetX="200")
+    UpdateRelStyle(BrakingAndLoadControlSubsystem, GeneratorElectromechanicalConversionSubsystem, $textColor="violet", $lineColor="violet", $offsetX="0")
+    UpdateRelStyle(ProtectionAndReliabilitySubsystem, AllSubsystems, $textColor="black", $lineColor="black", $offsetX="100")
+    UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="1")
