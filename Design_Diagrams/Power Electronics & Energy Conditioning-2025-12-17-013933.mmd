@@ -1,0 +1,49 @@
+C4Context
+    title System Context Diagram for Power Electronics & Energy Conditioning Subsystem
+    System_Boundary(PowerElectronicsAndEnergyConditioningSubsystem,"Power Electronics & Energy Conditioning Subsystem") {
+        System(PowerInputAndProtectionSubsystem, "Power Input & Protection Subsystem", "Safely accepts electrical power from an external source or generator.")
+        System(MotorDriveInverterSubsystem, "Motor Drive / Inverter Subsystem", "Controls power flow to and from the motor/generator.")
+        System(RectificationSubsystem, "Rectification Subsystem", "Converts AC power from a generator into DC power.")
+        System(DCToDCConversionSubsystem, "DC-DC Conversion Subsystem", "Regulates voltage to usable levels.")
+        System(EnergyBufferStorageInterfaceSubsystem, "Energy Buffer / Storage Interface Subsystem", "Temporarily stores or smooths electrical energy.")
+        System(PowerDistributionSubsystem, "Power Distribution Subsystem", "Routes conditioned power to loads and subsystems.")
+        System(MeasurementAndFeedbackSubsystem, "Measurement & Feedback Subsystem", "Monitors electrical performance.")
+        System(ControlInterfaceSubsystem, "Control Interface Subsystem", "Interfaces power electronics with the control system.")
+        System(ThermalManagementSubsystem, "Thermal Management Subsystem", "Maintains safe operating temperatures.")
+        System(AllSubsystems, "All Subsystems", "Represents all the subsystems of the Power Electronics & Energy Conditioning Subsystem.")
+    }
+    Rel(PowerInputAndProtectionSubsystem, MotorDriveInverterSubsystem, "Supplies protected, filtered power to the motor drive<br/>
+        Interrupts power during faults like overcurrent, short-circuit<br/>
+        Prevents damage from incorrect wiring or transients")
+    Rel(MotorDriveInverterSubsystem,RectificationSubsystem,"In generating mode, motor drive routes generated AC to rectifier<br/>
+        In motoring mode, rectifier is bypassed or inactive<br/>
+        Control system determines active path")
+    Rel(RectificationSubsystem,DCToDCConversionSubsystem,"Rectifier outputs unregulated DC<br/>
+        DC-DC converters regulate voltage/current to usable levels<br/>
+        Filters reduce ripple before conversion")
+    Rel(DCToDCConversionSubsystem,EnergyBufferStorageInterfaceSubsystem,"DC-DC converter controls charging current and voltage<br/>
+        Energy buffer smooths transients and absorbs regenerated power<br/>
+        Prevents overvoltage during sudden load changes")
+    Rel(EnergyBufferStorageInterfaceSubsystem,PowerDistributionSubsystem,"Stored energy feeds loads and control electronics<br/>
+        Acts as a stabilizing node for the DC bus")
+    Rel(PowerDistributionSubsystem,MeasurementAndFeedbackSubsystem,"Sensors monitor voltage and current on each rail<br/>
+        Provides real-time power flow data")
+    Rel(MeasurementAndFeedbackSubsystem,ControlInterfaceSubsystem,"Electrical data sent to microcontroller<br/>
+        Enables efficiency calculation, fault detection, and control tuning")
+    Rel(ControlInterfaceSubsystem,MotorDriveInverterSubsystem,"PWM signals set motor speed and torque<br/>
+        Sets current and voltage limits")
+    Rel(ControlInterfaceSubsystem,DCToDCConversionSubsystem,"Enables or disables converters<br/>
+        Sets current and voltage limits")
+    BiRel(ThermalManagementSubsystem,AllSubsystems,"Removes heat from motor drive and converters<br/>
+        Temperature sensors trigger derating or shutdown")
+    UpdateRelStyle(PowerInputAndProtectionSubsystem, MotorDriveInverterSubsystem, $textColor="red", $lineColor="red", $offsetX = "0")
+    UpdateRelStyle(MotorDriveInverterSubsystem,RectificationSubsystem, $textColor="orange", $lineColor="orange", $offsetX = "0")
+    UpdateRelStyle(RectificationSubsystem,DCToDCConversionSubsystem, $textColor="green", $lineColor="green", $offsetX = "0")
+    UpdateRelStyle(DCToDCConversionSubsystem,EnergyBufferStorageInterfaceSubsystem, $textColor="blue", $lineColor="blue", $offsetX = "0")
+    UpdateRelStyle(EnergyBufferStorageInterfaceSubsystem,PowerDistributionSubsystem, $textColor="indigo", $lineColor="indigo", $offsetX = "0")
+    UpdateRelStyle(PowerDistributionSubsystem,MeasurementAndFeedbackSubsystem, $textColor="violet", $lineColor="violet", $offsetX = "0")
+    UpdateRelStyle(MeasurementAndFeedbackSubsystem,ControlInterfaceSubsystem, $textColor="black", $lineColor="black", $offsetX = "0")
+    UpdateRelStyle(ControlInterfaceSubsystem,MotorDriveInverterSubsystem, $textColor="gray", $lineColor="gray", $offsetX = "250")
+    UpdateRelStyle(ControlInterfaceSubsystem,DCToDCConversionSubsystem, $textColor="brown", $lineColor="brown", $offsetX = "250")
+    UpdateRelStyle(ThermalManagementSubsystem,AllSubsystems, $textColor="red", $lineColor="red", $offsetX = "0")
+    UpdateLayoutConfig($c4ShapeInRow="1")
