@@ -1,0 +1,48 @@
+C4Context
+    title System Context diagram for Control & Automation Subsystem
+    System_Boundary(ControlAndAutomationSubsystemBoundary, "Control & Automation Subsystem Boundary") {
+        System(EmbeddedControlHardwareSubsystem, "Embedded Control Hardware Subsystem", "Executes control logic and interfaces with all electronics.")
+        System(ControlFirmwareAndLogicSubsystem, "Control Firmware & Logic Subsystem", "Defines system behavior and operating states.")
+        System(MotorAndActuatorControlSubsystem, "Motor & Actuator Control Subsystem", "Controls mechanical motion through electrical commands.")
+        System(SensorDataAcquisitionAndProcessingSubsystem, "Sensor Data Acquisition & Processing Subsystem", "Collects and processes system feedback.")
+        System(SafetyMonitoringAndInterlockSubsystem, "Safety Monitoring & Interlock Subsystem", "Ensures safe operation under all conditions.")
+        System(SystemStateManagementSubsystem, "RSystem State Management Subsystem", "Tracks and enforces allowable system states.")
+        System(CommunicationAndInterfaceSubsystem, "Communication & Interface Subsystem", "Enables data exchange with external devices and subsystems.")
+        System(UserInterfaceControlSubsystem, "User Interface Control Subsystem", "Allows human interaction with the system.")
+        System(DataLoggingAndPerformanceTrackingSubsystem, "Data Logging & Performance Tracking Subsystem", "Records operational data for analysis and reporting.")
+        System(AllSubsystems, "All Subsystems", "Represents all subsystems of the Control & Automation Subsystem.")    
+    }
+    System_Ext(PowerElectronicsAndEnergyConditioningSubsystem, "Power Electronics & Energy Conditioning Subsystem", "Conditions electrical power for storage or load use.")
+    BiRel(EmbeddedControlHardwareSubsystem, AllSubsystems, "Provides processing, memory, and timing resources<br/>
+        Hosts firmware, control algorithms, and interfaces<br/>
+        Routes signals between subsystems via GPIO, ADC, PWM, and buses")
+    Rel(SensorDataAcquisitionAndProcessingSubsystem, ControlFirmwareAndLogicSubsystem, "Sensor subsystem supplies real-time system measurements<br/>
+        Control logic uses this data for decision-making and feedback control")
+    BiRel(ControlFirmwareAndLogicSubsystem, SystemStateManagementSubsystem, "State manager defines allowed system modes<br/>
+        Control logic enforces behavior appropriate to the current state<br/>
+        Transitions occur based on sensor input, commands, or faults")
+    Rel(SystemStateManagementSubsystem, MotorAndActuatorControlSubsystem, "State manager enables or disables motion<br/>
+        Defines direction, speed limits, and allowable actions")
+    BiRel(MotorAndActuatorControlSubsystem, PowerElectronicsAndEnergyConditioningSubsystem, "Generates PWM and direction commands<br/>
+        Requests regenerative braking or torque limits<br/>
+        Receives feedback on driver status such as faults, current limits")
+    Rel(SensorDataAcquisitionAndProcessingSubsystem, SafetyMonitoringAndInterlockSubsystem, "Safety subsystem monitors raw or processed sensor data<br/>
+        Compares values against safe thresholds")
+    Rel(SafetyMonitoringAndInterlockSubsystem, ControlFirmwareAndLogicSubsystem, "Safety events immediately override normal control logic<br/>
+        Forces transition to Fault or Emergency Stop")
+    Rel(UserInterfaceControlSubsystem, SystemStateManagementSubsystem, "Motor current used to infer torque<br/>
+        Feedback used for closed-loop control")
+    Rel(SensorDataAcquisitionAndProcessingSubsystem, DataLoggingAndPerformanceTrackingSubsystem, "Receives time-stamped data from sensors")
+    Rel(ControlFirmwareAndLogicSubsystem, DataLoggingAndPerformanceTrackingSubsystem, "Receives time-stamped data from sensors and control logic<br/>
+    Does not influence control decisions directly")
+    UpdateRelStyle(EmbeddedControlHardwareSubsystem, AllSubsystems, $textColor="red", $lineColor="red", $offsetX="400")
+    UpdateRelStyle(SensorDataAcquisitionAndProcessingSubsystem, ControlFirmwareAndLogicSubsystem, $textColor="orange", $lineColor="orange" $offsetX="250")
+    UpdateRelStyle(ControlFirmwareAndLogicSubsystem, SystemStateManagementSubsystem, $textColor="green", $lineColor="green" $offsetX="325")
+    UpdateRelStyle(SystemStateManagementSubsystem, MotorAndActuatorControlSubsystem, $textColor="blue", $lineColor="blue", $offsetX="500")
+    UpdateRelStyle(MotorAndActuatorControlSubsystem, PowerElectronicsAndEnergyConditioningSubsystem, $textColor="indigo", $lineColor="indigo", $offsetX="250")
+    UpdateRelStyle(SensorDataAcquisitionAndProcessingSubsystem, SafetyMonitoringAndInterlockSubsystem, $textColor="violet", $lineColor="violet", $offsetX="0")
+    UpdateRelStyle(SafetyMonitoringAndInterlockSubsystem, ControlFirmwareAndLogicSubsystem, $textColor="black", $lineColor="black", $offsetX="0")
+    UpdateRelStyle(UserInterfaceControlSubsystem, SystemStateManagementSubsystem, $textColor="gray", $lineColor="gray", $offsetX="300")
+    UpdateRelStyle(SensorDataAcquisitionAndProcessingSubsystem, DataLoggingAndPerformanceTrackingSubsystem, $textColor="brown", $lineColor="brown", $offsetX="0")
+    UpdateRelStyle(ControlFirmwareAndLogicSubsystem, DataLoggingAndPerformanceTrackingSubsystem, $textColor="orange", $lineColor="orange", $offsetX="0")
+    UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="1")
