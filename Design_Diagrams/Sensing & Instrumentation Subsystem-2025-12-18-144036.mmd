@@ -1,0 +1,46 @@
+C4Context
+    title System Context diagram for Sensing & Instrumentation Subsystem
+    System_Boundary(SensingAndInstrumentationSubsystemBoundary, "Sensing & Instrumentation Subsystem Boundary") {
+        System(PositionAndHeightMeasurementSubsystem, "Position & Height Measurement Subsystem", "Measures vertical position of the mass and upper and lower travel limits.")
+        System(SpeedAndMotionMeasurementSubsystem, "Speed & Motion Measurement Subsystem", "Measures mass velocity and motor or drum rotational speed.")
+        System(LoadTensionMeasurementSubsystem, "Load / Tension Measurement Subsystem", "Measures cable tension and applied load or effective mass.")
+        System(ElectricalMeasurementSubsystem, "Electrical Measurement Subsystem", "Measures voltage, current, and electrical power and energy.")
+        System(EnvironmentalAndSystemHealthMonitoringSubsystem, "Environmental & System Health Monitoring Subsystem", "Measures temperature of motor, electronics, or bearings and ambient conditions.")
+        System(SignalConditioningSubsystem, "Signal Conditioning Subsystem", "Converts raw sensor signals into usable form.")
+        System(DataAcquisitionAndInterfaceSubsystem, "Data Acquisition & Interface Subsystem", "Collects sensor data and transmits data to control system.")
+        System(CalibrationAndReferenceSubsystem, "Calibration & Reference Subsystem", "Ensures sensor accuracy over time.")
+        System(AllMeasurementSubsystems, "All Measurement Subsystems", "Represents all measurement subsystems.")
+    }
+    System_Ext(StructuralAndMechanicalSubsystem, "Structural & Mechanical Subsystem", "Physically supports and guides the lifted mass.")
+    System_Ext(PowerElectronicsAndEnergyConditioningSubsystem, "Power Electronics & Energy Conditioning Subsystem", "Conditions electrical power for storage or load use.")
+    System_Ext(ControlAndAutomationSubsystem, "Control & Automation Subsystem", "Coordinates charging, discharging, and system behavior.")
+    Rel(PositionAndHeightMeasurementSubsystem, SpeedAndMotionMeasurementSubsystem, "Speed is often derived from position changes over time<br/>
+        Position limits bound allowable speeds<br/>
+        Encoder data may serve both functions")
+    Rel(PositionAndHeightMeasurementSubsystem, LoadTensionMeasurementSubsystem, "Load readings depend on mass position like static vs. dynamic<br/>
+        Position data helps distinguish normal load from shock loading")
+    Rel(StructuralAndMechanicalSubsystem, LoadTensionMeasurementSubsystem, "Mechanical forces are converted to electrical signals<br/>
+        Structural alignment affects sensor accuracy")
+    Rel(PowerElectronicsAndEnergyConditioningSubsystem, ElectricalMeasurementSubsystem, "Voltage and current sensors monitor input and generated power<br/>
+        Feedback used for efficiency calculation and protection")
+    BiRel(ElectricalMeasurementSubsystem, SpeedAndMotionMeasurementSubsystem, "Electrical power output correlates with descent speed<br/>
+        Used to tune generator loading")
+    BiRel(EnvironmentalAndSystemHealthMonitoringSubsystem, AllMeasurementSubsystems, "Temperature affects sensor drift<br/>
+        Health data modifies control thresholds")
+    Rel(SignalConditioningSubsystem, AllMeasurementSubsystems, "Amplifies low-level signals<br/>
+        Filters noise<br/> 
+        Protects ADC inputs")
+    Rel(DataAcquisitionAndInterfaceSubsystem, ControlAndAutomationSubsystem, "DAQ samples and time-aligns sensor data<br/>
+        Control system consumes processed measurements")
+    Rel(CalibrationAndReferenceSubsystem, AllMeasurementSubsystems, "Calibration constants applied to raw sensor data<br/>
+        Zeroing routines executed at startup or periodically")
+    UpdateRelStyle(PositionAndHeightMeasurementSubsystem, SpeedAndMotionMeasurementSubsystem, $textColor="red", $lineColor="red", $offsetX="0")
+    UpdateRelStyle(PositionAndHeightMeasurementSubsystem, LoadTensionMeasurementSubsystem, $textColor="orange", $lineColor="orange", $offsetX="250")
+    UpdateRelStyle(StructuralAndMechanicalSubsystem, LoadTensionMeasurementSubsystem, $textColor="green", $lineColor="green", $offsetX="400")
+    UpdateRelStyle(ElectricalMeasurementSubsystem, SpeedAndMotionMeasurementSubsystem, $textColor="blue", $lineColor="blue", $offsetX="250")
+    UpdateRelStyle(PowerElectronicsAndEnergyConditioningSubsystem, ElectricalMeasurementSubsystem, $textColor="indigo", $lineColor="indigo", $offsetX="350")
+    UpdateRelStyle(EnvironmentalAndSystemHealthMonitoringSubsystem, AllMeasurementSubsystems, $textColor="violet", $lineColor="violet", $offsetX="250")
+    UpdateRelStyle(SignalConditioningSubsystem, AllMeasurementSubsystems, $textColor="black", $lineColor="black", $offsetX="0")
+    UpdateRelStyle(DataAcquisitionAndInterfaceSubsystem, ControlAndAutomationSubsystem, $textColor="red", $linecColor="red", $offsetX="300")
+    UpdateRelStyle(CalibrationAndReferenceSubsystem, AllMeasurementSubsystems, $textColor="orange", $lineColor="orange", $offsetX="0")
+    UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="1")
