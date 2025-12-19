@@ -1,0 +1,52 @@
+C4Context
+    title System Context diagram for Safety & Protection Subsystem
+    System_Boundary(SafetyAndProtectionSubsystemBoundary, "Safety & Protection Subsystem Boundary") {
+        System(MechanicalSafetySubsystem, "Mechanical Safety Subsystem", "Physically prevents unsafe motion or structural failure.")
+        System(ElectricalProtectionSubsystem, "Electrical Protection Subsystem", "Protects electronics and wiring from electrical faults.")
+        System(EmergencyStopSubsystem, "Emergency Stop / E-Stop Subsystem", "Allows immediate manual shutdown of system motion and power.")
+        System(SoftwareSafetyAndInterlockSubsystem, "Software Safety & Interlock Subsystem", "Prevents unsafe operation through control logic.")
+        System(SensorBasedProtectionSubsystem, "Sensor-Based Protection Subsystem", "Detects unsafe conditions and triggers protective action.")
+        System(BrakingAndMotionArrestSubsystem, "Braking & Motion Arrest Subsystem", "Stops or holds the mass safely when power is removed or a fault occurs.")
+        System(StructuralMonitoringAndIntegritySubsystem, "Structural Monitoring & Integrity Subsystem", "Monitors health of critical load-bearing elements.")
+        System(HumanSafetyAndComplianceSubsystem, "Human Safety & Compliance Subsystem", "Reduces risk to operators and observers.")    
+    }
+    Rel(SensorBasedProtectionSubsystem, SoftwareSafetyAndInterlockSubsystem, "Sensors continuously report:<br/>
+            Position<br/>
+            Speed<br/>
+            Load/tension<br/>
+            Temperature<br/>
+            Electrical condition<br/>
+        Software compares readings to safe limits<br/>
+        Fault flags are generated when thresholds are exceeded")
+    Rel(SoftwareSafetyAndInterlockSubsystem, BrakingAndMotionArrestSubsystem, "Upon fault detection, software:<br/>
+            Commands regenerative or dynamic braking<br/>
+            Engages mechanical brake if available<br/>
+        Ensures controlled deceleration before full stop")
+    BiRel(SoftwareSafetyAndInterlockSubsystem, ElectricalProtectionSubsystem, "Software limits current, voltage, and duty cycle<br/>
+        Electrical protection triggers independently if limits are exceeded<br/>
+        Electrical protection can override software commands")
+    BiRel(EmergencyStopSubsystem, ElectricalProtectionSubsystem, "E-Stop directly:<br/>
+            De-energizes motor driver<br/>
+            Opens power relay or contactor<br/>
+        Electrical protection ensures safe power interruption")
+    Rel(EmergencyStopSubsystem, BrakingAndMotionArrestSubsystem, "E-Stop removes power<br/>
+        Brake engages automatically<br/>
+        Prevents free-fall during power loss")
+    Rel(BrakingAndMotionArrestSubsystem, MechanicalSafetySubsystem, "Brake handles normal and fault stopping<br/>
+        Mechanical hard stops provide final physical limit<br/>
+        Hard stops are only contacted in failure scenarios")
+    BiRel(MechanicalSafetySubsystem, StructuralMonitoringAndIntegritySubsystem, "Structural monitoring detects abnormal loads or deformation<br/>
+        Results may trigger software limits or shutdown<br/>
+        Mechanical safety elements absorb loads during faults")
+    Rel(HumanSafetyAndComplianceSubsystem, EmergencyStopSubsystem, "Clear labeling enables rapid identification of E-Stop<br/>
+        Lockout/tagout ensures safe maintenance<br/>
+        Procedures define when E-Stop must be tested")
+    UpdateRelStyle(SensorBasedProtectionSubsystem, SoftwareSafetyAndInterlockSubsystem, $textColor="red", $lineColor="red", $offsetX="300")
+    UpdateRelStyle(SoftwareSafetyAndInterlockSubsystem, BrakingAndMotionArrestSubsystem, $textColor="orange", $lineColor="orange" $offsetX="200")
+    UpdateRelStyle(SoftwareSafetyAndInterlockSubsystem, ElectricalProtectionSubsystem, $textColor="green", $lineColor="green" $offsetX="350")
+    UpdateRelStyle(EmergencyStopSubsystem, ElectricalProtectionSubsystem, $textColor="blue", $lineColor="blue", $offsetX="0")
+    UpdateRelStyle(EmergencyStopSubsystem, BrakingAndMotionArrestSubsystem, $textColor="indigo", $lineColor="indigo", $offsetX="0")
+    UpdateRelStyle(BrakingAndMotionArrestSubsystem, MechanicalSafetySubsystem, $textColor="violet", $lineColor="violet", $offsetX="0")
+    UpdateRelStyle(MechanicalSafetySubsystem, StructuralMonitoringAndIntegritySubsystem, $textColor="black", $lineColor="black", $offsetX="200")
+    UpdateRelStyle(HumanSafetyAndComplianceSubsystem, EmergencyStopSubsystem, $textColor="gray", $lineColor="gray", $offsetX="0")
+    UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="1")
