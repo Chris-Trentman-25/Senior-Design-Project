@@ -1,0 +1,46 @@
+C4Context
+    title System Context Diagram for User Interface & Data Logging Subsystem
+    System_Boundary(UserInterfaceAndDataLoggingSubsystemBoundary,"User Interface & Data Logging Subsystem Boundary") {
+        System(UserInputSubsystem, "User Input Subsystem", "Allows the user to issue commands and configure operation.")
+        System(UserOutputDisplaySubsystem, "User Output / Display Subsystem", "Communicates system state and performance to the user.")
+        System(DataAcquisitionInterfaceSubsystem, "Data Acquisition Interface Subsystem", "Bridges system sensors and data logging components.")
+        System(DataStorageSubsystem, "Data Storage Subsystem", "Stores operational data for later analysis.")
+        System(CommunicationInterfaceSubsystem, "Communication Interface Subsystem", "Transfers data and commands between system and external devices.")
+        System(VisualizationAndAnalysisSubsystem, "Visualization & Analysis Subsystem", "Enables post-processing and real-time monitoring.")
+        System(UserFeedbackAndErrorReportingSubsystem, "User Feedback & Error Reporting Subsystem", "Informs the user of system health and abnormal conditions.")
+    }
+    System_Ext(ControlAndAutomationSubsystem, "Control & Automation Subsystem", "Coordinates charging, discharging, and system behavior.")
+    System_Ext(SensingAndInstrumentationSubsystem, "Sensing & Instrumentation Subsystem", "Provides feedback for control, safety, and performance analysis.")
+    Rel(UserInputSubsystem, ControlAndAutomationSubsystem, "User commands including start, stop, mode select are sent to the control system<br/>
+        Control logic validates commands before execution<br/>
+        Invalid or unsafe commands are rejected")
+    Rel(ControlAndAutomationSubsystem,UserOutputDisplaySubsystem,"Control system sends system status and measurements<br/>
+        Display shows current mode, position, power, and faults<br/>
+        Update rate managed to avoid overloading MCU")
+    Rel(SensingAndInstrumentationSubsystem,DataAcquisitionInterfaceSubsystem,"Raw sensor signals routed to data acquisition<br/>
+        Signals may be filtered or scaled<br/>
+        Shared ADC resources with control loop")
+    Rel(DataAcquisitionInterfaceSubsystem,DataStorageSubsystem,"Sampled and timestamped data is written to memory<br/>
+        Logging frequency coordinated with control loop timing<br/>
+        Data integrity checks applied")
+    BiRel(DataStorageSubsystem,CommunicationInterfaceSubsystem,"Logged data transferred to external device<br/>
+        Live streaming may bypass storage<br/>
+        User can request specific datasets")
+    Rel(CommunicationInterfaceSubsystem,VisualizationAndAnalysisSubsystem,"Real-time or post-run data sent to PC<br/>
+        External tools graph performance metrics<br/>
+        Supports efficiency and energy calculations")
+    Rel(ControlAndAutomationSubsystem,UserFeedbackAndErrorReportingSubsystem,"Fault conditions trigger user alerts<br/>
+        Severity determines message type, for example warning vs. shutdown<br/>
+        Safety events are clearly indicated")
+    Rel(UserFeedbackAndErrorReportingSubsystem,UserOutputDisplaySubsystem,"Errors displayed visually and/or audibly<br/>
+        Persistent faults remain until cleared<br/>
+        Alerts override normal display content if needed")
+    UpdateRelStyle(UserInputSubsystem, ControlAndAutomationSubsystem, $textColor="red", $lineColor="red", $offsetX = "300")
+    UpdateRelStyle(ControlAndAutomationSubsystem,UserOutputDisplaySubsystem, $textColor="orange", $lineColor="orange", $offsetX = "300")
+    UpdateRelStyle(SensingAndInstrumentationSubsystem,DataAcquisitionInterfaceSubsystem, $textColor="green", $lineColor="green", $offsetX = "300")
+    UpdateRelStyle(DataAcquisitionInterfaceSubsystem,DataStorageSubsystem, $textColor="blue", $lineColor="blue", $offsetX = "0")
+    UpdateRelStyle(DataStorageSubsystem,CommunicationInterfaceSubsystem, $textColor="indigo", $lineColor="indigo", $offsetX = "350")
+    UpdateRelStyle(CommunicationInterfaceSubsystem,VisualizationAndAnalysisSubsystem, $textColor="violet", $lineColor="violet", $offsetX = "0")
+    UpdateRelStyle(ControlAndAutomationSubsystem,UserFeedbackAndErrorReportingSubsystem, $textColor="black", $lineColor="black", $offsetX = "300")
+    UpdateRelStyle(UserFeedbackAndErrorReportingSubsystem,UserOutputDisplaySubsystem, $textColor="gray", $lineColor="gray", $offsetX = "0")
+    UpdateLayoutConfig($c4ShapeInRow="1")
