@@ -1,0 +1,2 @@
+1. Mission Statement: Design and build a lab-scale tower gravity energy storage system capable of storing and releasing mechanical potential energy under automated control while measuring efficiency and ensuring safe operation.
+   
