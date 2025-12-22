@@ -38,24 +38,7 @@ Design and build a lab-scale tower gravity energy storage system capable of stor
 | R6          | system completes lift/lower without manual intervention |
 | R7          | voltage & current logged at >= 10 Hz                    |
 | R8          | efficiency computed from logged data                    |
-| R9          | e-stop halts motion within safe d
-
-    Structural & Mechanical Subsystem
-
-    Lifting & Transmission Subsystem
-
-    Motor / Generator Subsystem
-
-    Power Electronics & Energy Conditioning Subsystem
-
-    Control & Automation Subsystem
-
-    Sensing & Instrumentation Subsystem
-
-    Safety & Protection Subsystem
-
-    User Interface & Data Logging Subsystem
-istance                |
+| R9          | e-stop halts motion within safe distance
 # System Architecture
 ## Revised Energy Requirement
 ### Updated Requirement
