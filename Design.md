@@ -122,3 +122,18 @@ Chose winch and cable because it is compact, scalable, and cheap.
 Chose DC motor with regen because of its bidirectional energy flow.
 ### Control
 Chose microcontroller-based state machine because of the need for automation and safety logic.
+# Energy Storage Sizing
+## Fixed Lift Height
+Total tower height is 2 m, but usable lift height is only 1.6 m to allow for top and bottom clearances, mechanical stops, sensor mounting, and safety margin.
+## Fixed Stored Energy
+Chose 0.5 Wh as target stored energy.
+## Fixed Mass
+By equation $E = mgh$, mass required is about 115 kg.
+## Preliminary Force and Torque Numbers
+### Structural Loads
+Static load is about 115 kg.
+Dynamic load is more than 115 kg due to acceleration.
+### Lifting Force
+$F = mg \approx 1130 N$
+### Motor Torque
+For winch radius of 50 mm, $\tau = Fr \approx 56.5 N\cdotp m$
