@@ -120,3 +120,34 @@ Dynamic load is more than 115 kg due to acceleration.
 $F = mg \approx 1130 N$
 ### Motor Torque
 For winch radius of 50 mm, $\tau = Fr \approx 56.5 N\cdotp m$
+# Structural and Mechanical Design
+## Tower Geometry and Material Choice
+Ideal structural material is Aluminum T-slot extrusion because it is modular and adjustable, easy to assemble and modify, and adequately strong for 115 kg.
+Proposed geometry is a four-column verticle frame, with columns at the corners of a square and cross-bracing at base and mid-height.
+### Dimensions
+| Parameter          | Value         |
+|--------------------|---------------|
+| Total height       | 2 m           |
+| Usable lift height | 1.6 m         |
+| Base footprint     | 0.6 m x 0.6 m |
+## Load Calculations with FoS
+### Static Load
+$F_{static} = mg = 115 \times 9.81 \approx 1130 N$
+### Dynamic Load
+$F_{design} \approx 1.5 \times F_{static} \approx 1700 N$
+### Load Distribution
+$F_{per column} \approx 425 N$
+## Base and Anchoring Concept
+A steel or aluminum plate, weighted, with rubber feet since floor bolts are not allowed.
+## Lifted Mass Design
+115 kg +/- 5 kg steel plates stacked and bolted or concrete block in steel cage with secure attachment point and compact vertical profile.
+## Guidance System Selection
+Linear rails to prevent swing, reduce cable shock, and improve safety and measurement repeatability
+## Mechanical Stops and Safety Margins
+Hard lower and upper stops for absorbing full load and preventing over travel, respectively. Clearance before top of structure.
+
+
+
+
+
+
