@@ -75,7 +75,50 @@ Height is limited to 2 m by transportation/budget constraints. Goal is for syste
 8. User Interface & Data Logging Subsystem
 ## Energy/Signal Flow Definitions
 ### Energy Flow (Charge)
+```mermaid
+---
+config:
+      theme: redux
+---
+flowchart TD
+        A["Electrical Source"]
+        A --> B["Motor Driver"]
+        B --> C["Motor"]
+        C --> D["Winch/Gearbox"]
+        D --> E["Lifted Mass (Potential Energy)"]
+```
 ### Energy Flow (Discharge)
+```mermaid
+---
+config:
+      theme: redux
+---
+flowchart TD
+        A["Lifted Mass"]
+        A --> B["Winch/Gearbox"]
+        B --> C["Motor (Generator Mode)"]
+        C --> D["Motor Driver"]
+        D --> E["Electrical Load/Battery"]
+```
 ### Signal Flow
-## System Architecture
-
+```mermaid
+---
+config:
+      theme: redux
+---
+flowchart TD
+        A["Sensors"]
+        A --> B["Controller"]
+        B --> C["Motor Driver"]
+        D["Safety Interlocks"]
+        D --> B
+```
+## System Architecture Choices
+### Vertical Motion Method
+Chose guided vertical mass because of the simple physics, clear energy path, and easy measurement.
+### Transmission
+Chose winch and cable because it is compact, scalable, and cheap.
+### Motor Type
+Chose DC motor with regen because of its bidirectional energy flow.
+### Control
+Chose microcontroller-based state machine because of the need for automation and safety logic.
