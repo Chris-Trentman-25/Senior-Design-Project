@@ -2,3 +2,4 @@
 2. Maximum Allowed Tower Height: 2 m
 3. Prefer single mass for simplicity.
 4. Floor-mounted tower
+5. Steel cable
