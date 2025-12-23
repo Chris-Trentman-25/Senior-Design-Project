@@ -145,8 +145,24 @@ A steel or aluminum plate, weighted, with rubber feet since floor bolts are not 
 Linear rails to prevent swing, reduce cable shock, and improve safety and measurement repeatability
 ## Mechanical Stops and Safety Margins
 Hard lower and upper stops for absorbing full load and preventing over travel, respectively. Clearance before top of structure.
-
-
+# Lifting and Transmission Design
+## Winch Geometry
+Single-drum winch with radius 50 mm
+## Cable Selection and Rating
+Galvanized steel wire rope with 4 - 6 mm diameter and 7 x 19 construction
+## Torque, Speed, and Power Requirements
+### Required Winch Torque
+$tau = F \times r = 1700 \times 0.05 \approx 85 N \cdotp m$
+Motor and gearbox must provide at least 85 Nm continuous torque at the winch.
+### List Speed Selection
+0.1 m/s lift speed
+time to full lift is $t = \frac{1.6}{0.1} = 16 s$
+### Mechanical Power During Lift/Lower
+$P = F \times v$
+$P = 1130 \times 0.1 \approx 113 W$
+With losses, need about 150 W electrical system.
+## Braking Concept
+Spring-applied, electrically released brake on motor shaft that engages automatically on power loss, holds load at any height, and can be made very safe.
 
 
 
