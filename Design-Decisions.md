@@ -3,3 +3,4 @@
 3. Prefer single mass for simplicity.
 4. Floor-mounted tower
 5. Steel cable
+6. Brushed DC motor
