@@ -152,7 +152,7 @@ Single-drum winch with radius 50 mm
 Galvanized steel wire rope with 4 - 6 mm diameter and 7 x 19 construction
 ## Torque, Speed, and Power Requirements
 ### Required Winch Torque
-$tau = F \times r = 1700 \times 0.05 \approx 85 N \cdotp m$
+$\tau = F \times r = 1700 \times 0.05 \approx 85 N \cdotp m$
 Motor and gearbox must provide at least 85 Nm continuous torque at the winch.
 ### List Speed Selection
 0.1 m/s lift speed
