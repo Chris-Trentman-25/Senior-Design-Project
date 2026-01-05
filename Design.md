@@ -163,7 +163,33 @@ $P = 1130 \times 0.1 \approx 113 W$
 With losses, need about 150 W electrical system.
 ## Braking Concept
 Spring-applied, electrically released brake on motor shaft that engages automatically on power loss, holds load at any height, and can be made very safe.
-
-
-
-
+# Motor / Generator & Gearbox Selection (Brushed DC)
+## Winch angular speed
+$\omega = \frac{v}{r} = \frac{0.1}{0.05} = 2 \frac{rad}{s}$.
+$RPM = \frac{2 \times 60}{2\pi} \approx 19 RPM$.
+The winch must turn at ~20 RPM under load.
+## Gearbox Ratio Selection
+### Target Motor Speed Choice
+~2000 RPM under load
+### Required Gear Reduction
+$G = \frac{2000}{20} = 100: 1$
+## Required Motor Torque
+$\tau_{motor} = \frac{\tau_{winch}}{G}$.
+$\tau_{motor} = \frac{85}{100} = 0.85 N \cdotp m$.
+Assuming gearbox efficiency of ~85%,
+$\tau_{motor, req} \approx 1.0 N \cdotp m$.
+## Motor Power Rating
+$P = \tau \omega$.
+$2000 RPM = 209 \frac{rad}{s}$.
+$P = 1.0 \times 209 \approx 209 W$
+### Motor Rating Selection
+Rated power of 250-300 W
+Voltage of 24V of 48V
+Continuous torque of at least 1.0 $N \cdotp m$
+## Regenerative Operation
+Brushed DC motors naturally generate voltage when driven.
+### Requirements
+- Motor driver must support bidirectional current
+- DC bus must absorb regenerated energy
+## Motor Brake Integration
+Normally-closed mechanical brake installed on motor shaft or gearbox output that holds load when power is lost and engages during emergency stop.
