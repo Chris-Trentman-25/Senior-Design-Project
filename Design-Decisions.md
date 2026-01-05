@@ -4,3 +4,4 @@
 4. Floor-mounted tower
 5. Steel cable
 6. Brushed DC motor
+7. Battery
