@@ -5,3 +5,4 @@
 5. Steel cable
 6. Brushed DC motor
 7. Battery
+8. Arduino-class MCU
