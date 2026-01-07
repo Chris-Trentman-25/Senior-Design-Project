@@ -163,7 +163,7 @@ $P = 1130 \times 0.1 \approx 113 W$
 With losses, need about 150 W electrical system.
 ## Braking Concept
 Spring-applied, electrically released brake on motor shaft that engages automatically on power loss, holds load at any height, and can be made very safe.
-# Motor / Generator & Gearbox Selection (Brushed DC)
+# Motor / Generator & Gearbox Selection
 ## Winch angular speed
 $\omega = \frac{v}{r} = \frac{0.1}{0.05} = 2 \frac{rad}{s}$.
 $RPM = \frac{2 \times 60}{2\pi} \approx 19 RPM$.
@@ -193,3 +193,29 @@ Brushed DC motors naturally generate voltage when driven.
 - DC bus must absorb regenerated energy
 ## Motor Brake Integration
 Normally-closed mechanical brake installed on motor shaft or gearbox output that holds load when power is lost and engages during emergency stop.
+# Power Electronics and Energy Conditioning
+## Electrical Architecture Definition
+- DC bus based system
+- Brushed DC motor connected by 4-quadrant motor driver
+- Battery connected to DC bus 
+## DC Bus Voltage Selection
+24 V DC
+## Motor Driver Selection
+- 4-quadrant operation
+- Voltage at least 24 V
+- Continuous current at least 15 A
+- Current sensing output
+$P = VI$.
+$I = \frac{250}{24} \approx 10.4 A$.
+## Battery Selection
+### Battery Type
+Lithium-ion
+### Capacity Requirements
+24 V, 2 Ah
+## Battery Protection and Interface
+- Battery Management System
+- Fuse near battery terminal
+- Contactor or power switch
+## Regen Voltage Control
+1. Battery absorbs energy
+2. Motor driver limits regen current
