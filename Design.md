@@ -219,3 +219,39 @@ Lithium-ion
 ## Regen Voltage Control
 1. Battery absorbs energy
 2. Motor driver limits regen current
+# Control And Automation
+## Control Objectives
+1. Execute automated lift and lower cycles
+2. Regulate motor speed
+3. Prevent over-travel
+4. Manage energy flow
+5. Respond to faults and emergency stops
+6. Log data for efficiency calculation
+## Operating Modes
+| Mode           | Description                   |
+|----------------|-------------------------------|
+| Idle           | System powered, no motion     |
+| Lift           | Motor lifts mass              |
+| Hold           | Mass held at height           |
+| Lower          | Controlled descent with regen |
+| Fault          | Error detected                |
+| Emergency Stop | Immediate safe stop           |
+## State Machine
+### State Transitions
+Idle -> Lift -> Hold -> Lower -> Idle
+### Fault Transitions
+- Any State -> Fault
+- Any State -> E-Stop
+## Speed Control Strategy
+Open-loop PWM with current limiting
+## Direction and Regeneration Control
+- Lift: Forward PWM, positive current
+- Lower: Reverse PWM or regen mode
+## Safety Interlocks in Control Logic
+### Hardware Level
+- Emergency Stop
+- Limit Switches
+### Software Level
+- Max current limit
+- Max time in motion
+- Sensor plausibility checks
