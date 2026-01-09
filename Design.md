@@ -255,3 +255,41 @@ Open-loop PWM with current limiting
 - Max current limit
 - Max time in motion
 - Sensor plausibility checks
+# Sensing and Instrumentation
+## Position and Travel Sensing
+### Selected Sensors
+- Upper limit switch
+- Lower limit switch
+### Placement
+- Upper switch slightly below mechanical top stop
+- Lower switch slightly above mechanical bottom stop
+## Electrical Measurements
+### Voltage Measurement
+- Battery voltage by resistor divider
+- ADC input on Arduino
+### Current Measurement
+- Hall-effect current sensor
+### Required Performance
+| Parameter        | Value    |
+|------------------|----------|
+| Voltage accuracy | +/- 2-3% |
+| Current range    | +/- 20 A |
+| Sample rate      | >= 10 Hz |
+## Efficiency Measurement Method
+### Electrical Energy In
+$E_{in} = \int V(t)I(t)dt$
+### Electrical Energy Out
+$E_{out} = \int V(t)I(t)dt$
+### Round-Trip Efficiency
+$\eta = \frac{E_{out}}{E_{in}}$
+## Data Logging Plan
+### Logged Variables
+- Time
+- Battery voltage
+- Motor current
+- State
+- Limit switch status
+### Logging Methods
+- Serial output to PC
+- SD card module
+- Onboard flash
