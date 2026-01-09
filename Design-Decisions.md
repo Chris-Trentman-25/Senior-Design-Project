@@ -7,3 +7,4 @@
 7. Battery
 8. Arduino-class MCU
 9. Limit Switches
+10. Supervised lab operation
