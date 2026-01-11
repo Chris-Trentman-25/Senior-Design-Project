@@ -345,11 +345,41 @@ E-stop bypasses the MCU entirely.
 ## Guarding and Operator Safety
 ### Required Physical Measures
 - Clear polycarbonate guarding around:
-      - Moving mass
-      - Winch and cable
+      Moving mass,
+      Winch and cable
 - Warning labels
 - Clearly marked safe zones
 ### Operational Rules
 - No hands inside guarding during motion
 - One operator at controls
 - Supervisor present during testing
+# User Interface and Data Logging
+## UI Objectives
+1. Command system states
+2. Display live system status
+3. Visualize power and energy
+4. Log data for post-processing
+5. Support safe, supervised operation
+## PC-MCU Communication Architecture
+USB Serial Communication
+## Data Logging Strategy
+### Logged Variables
+| Variable            | Purpose       |
+|---------------------|---------------|
+| Timestamp           | Integration   |
+| State               | Context       |
+| Battery Voltage     | Energy        |
+| Motor Current       | Energy        |
+| Calculated Power    | Visualization |
+| Limit Switch Status | Verification  |
+### Logging Rate
+10-50 Hz
+## Efficiency Calculation Workflow
+### On Arduino
+Stream raw voltage/current/time data
+### On PC
+- Integrate power to compute:
+        Energy in,
+        Energy out
+- Compute round-trip efficiency
+- Plot results
