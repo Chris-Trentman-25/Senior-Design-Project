@@ -106,6 +106,8 @@ Chose 0.049 Wh as target stored energy.
 ## Preliminary Force and Torque Numbers
 ### Lifting Force
 $F = mg \approx 392.4 N$
+# Vertical Motion and Transmission Method
+Vertical lead screw with guided mass because it has lower torque compared to winch and is self-locking when power goes off.
 # Structural and Mechanical Design
 ## Tower Geometry and Material Choice
 Ideal structural material is Aluminum T-slot extrusion because it is modular and adjustable, easy to assemble and modify, and adequately strong for 115 kg.
