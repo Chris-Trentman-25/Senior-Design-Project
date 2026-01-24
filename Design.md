@@ -97,8 +97,6 @@ Chose DC motor with regen because of its bidirectional energy flow.
 ### Control
 Chose microcontroller-based state machine because of the need for automation and safety logic.
 # Energy Storage Sizing
-## Fixed Lift Height
-Total tower height is 0.5 m, but usable lift height is only 0.45 m to allow for top and bottom clearances, mechanical stops, sensor mounting, and safety margin.
 ## Fixed Stored Energy
 Chose 0.049 Wh as target stored energy.
 ## Discharge Power and Time
@@ -108,31 +106,30 @@ Chose 0.049 Wh as target stored energy.
 $F = mg \approx 392.4 N$
 # Vertical Motion and Transmission Method
 Vertical lead screw with guided mass because it has lower torque compared to winch and is self-locking when power goes off.
-# Structural and Mechanical Design
-## Tower Geometry and Material Choice
-Ideal structural material is Aluminum T-slot extrusion because it is modular and adjustable, easy to assemble and modify, and adequately strong for 115 kg.
-Proposed geometry is a four-column verticle frame, with columns at the corners of a square and cross-bracing at base and mid-height.
-### Dimensions
-| Parameter          | Value         |
-|--------------------|---------------|
-| Total height       | 2 m           |
-| Usable lift height | 1.6 m         |
-| Base footprint     | 0.6 m x 0.6 m |
-## Load Calculations with FoS
-### Static Load
-$F_{static} = mg = 115 \times 9.81 \approx 1130 N$
-### Dynamic Load
-$F_{design} \approx 1.5 \times F_{static} \approx 1700 N$
-### Load Distribution
-$F_{per column} \approx 425 N$
-## Base and Anchoring Concept
-A steel or aluminum plate, weighted, with rubber feet since floor bolts are not allowed.
-## Lifted Mass Design
-115 kg +/- 5 kg steel plates stacked and bolted or concrete block in steel cage with secure attachment point and compact vertical profile.
-## Guidance System Selection
-Linear rails to prevent swing, reduce cable shock, and improve safety and measurement repeatability
-## Mechanical Stops and Safety Margins
-Hard lower and upper stops for absorbing full load and preventing over travel, respectively. Clearance before top of structure.
+# Structural Frame Design
+## Structural Configuration
+Proposed geometry is a four-column verticle frame, with columns at the corners of a square, top and bottom plates, central lead screw, and two vertical guide rails.
+## Extrusion Size
+40 mm x 40 mm aluminum T-slot extrusion due to strength, torsional rigidity, availability, and easy mounting of guides, sensors, and guards.
+## Load Path and Forces
+Vertical load of 392 N acts downward on the mass, transferring through the nut block, lead screw, top bearing, and frame.
+## Frame Height and Cut Lengths
+### Vertical Members
+- nominal height of 600 mm
+### Horizontal Members
+- base frame: 400 x 400 mm
+- top frame: 400 mm width
+### Preliminary Material List
+| Member            | Quantity | Length |
+|-------------------|----------|--------|
+| Vertical Uprights | 4        | 600 mm |
+| Base Frame        | 4        | 400 mm |
+| Top Frame         | 2        | 400 mm |
+## Safety Integration into Structure
+- upper limit switch
+- lower limit switch
+- mechanical hard stops
+- polycarbonate guarding
 # Lifting and Transmission Design
 ## Winch Geometry
 Single-drum winch with radius 50 mm
