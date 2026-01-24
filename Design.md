@@ -18,23 +18,20 @@ Design and build a lab-scale tower gravity energy storage system capable of stor
 ## Quantitative System Requirements
 | ID  | Requirement            | Target / Constraint    |
 |-----|------------------------|------------------------|
-| R1  | stored energy capacity | >= 2 Wh                |
-| R2  | tower height           | <= 4 m                 |
-| R3  | lifted mass            | <= 250 kg              |
-| R4  | max discharge power    | 100 - 300 W            |
-| R5  | charge time            | <= 2 minutes           |
-| R6  | control mode           | fully automated        |
-| R7  | measurement            | energy in/out logged   |
-| R8  | efficiency calculation | round-trip efficiency  |
-| R9  | safety                 | e-stop and hard limits |
-| R10 | environment            | indoor lab operation   |
-| R11 | budget                 | <= project budget      |
-| R12 | reset capability       | repeatable cycles      |
+| R1  | stored energy capacity | >= 0.25 Wh             |
+| R2  | tower height           | <= 0.5 m               |
+| R3  | lifted mass            | 150 - 300 kg           |
+| R4  | discharge power        | 50 - 200 W             |
+| R5  | charge time            | <= 30 s                |
+| R6  | automation             | fully automated        |
+| R7  | efficiency measurement | required               |
+| R8  | safety                 | e-stop and limits      |
+| R9  | environment            | indoor lab operation   |
 ## Acceptance Criteria
 | Requirement | Acceptance Test                                         |
 |-------------|---------------------------------------------------------|
-| R1          | lift mass stores >= 2 Wh                                |
-| R4          | system delivers >= 100 W to load                        |
+| R1          | lift mass stores >= 0.25 Wh                             |
+| R4          | system delivers >= 50 W to load                         |
 | R6          | system completes lift/lower without manual intervention |
 | R7          | voltage & current logged at >= 10 Hz                    |
 | R8          | efficiency computed from logged data                    |
