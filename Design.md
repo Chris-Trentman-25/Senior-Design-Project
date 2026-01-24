@@ -106,8 +106,6 @@ Chose 0.049 Wh as target stored energy.
 ## Preliminary Force and Torque Numbers
 ### Lifting Force
 $F = mg \approx 392.4 N$
-### Motor Torque
-For winch radius of 50 mm, $\tau = Fr \approx 56.5 N\cdotp m$
 # Structural and Mechanical Design
 ## Tower Geometry and Material Choice
 Ideal structural material is Aluminum T-slot extrusion because it is modular and adjustable, easy to assemble and modify, and adequately strong for 115 kg.
