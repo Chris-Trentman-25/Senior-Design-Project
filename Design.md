@@ -37,22 +37,16 @@ Design and build a lab-scale tower gravity energy storage system capable of stor
 | R8          | efficiency computed from logged data                    |
 | R9          | e-stop halts motion within safe distance
 # System Architecture
-## Revised Energy Requirement
-### Updated Requirement
-| ID | Updated Requirement     |
-|----|-------------------------|
-| R1 | stored energy >= 0.5 Wh |
-### Justification
-Height is limited to 2 m by transportation/budget constraints. Goal is for system to demonstrate principles instead of capacity.
 ## Subsystem List
 1. Structural & Mechanical Subsystem
-2. Lifting & Transmission Subsystem
-3. Motor / Generator Subsystem
-4. Power Electronics & Energy Conditioning Subsystem
-5. Control & Automation Subsystem
-6. Sensing & Instrumentation Subsystem
-7. Safety & Protection Subsystem
-8. User Interface & Data Logging Subsystem
+2. Guided Mass Assembly
+3. Lifting & Transmission Subsystem
+4. Motor / Generator Subsystem
+5. Power Electronics & Energy Conditioning Subsystem
+6. Control & Automation Subsystem
+7. Sensing & Instrumentation Subsystem
+8. Safety & Protection Subsystem
+9. User Interface & Data Logging Subsystem
 ## Energy/Signal Flow Definitions
 ### Energy Flow (Charge)
 ```mermaid
@@ -64,7 +58,7 @@ flowchart TD
         A["Electrical Source"]
         A --> B["Motor Driver"]
         B --> C["Motor"]
-        C --> D["Winch/Gearbox"]
+        C --> D["Winch/Gearbox or Lead Screw"]
         D --> E["Lifted Mass (Potential Energy)"]
 ```
 ### Energy Flow (Discharge)
@@ -75,7 +69,7 @@ config:
 ---
 flowchart TD
         A["Lifted Mass"]
-        A --> B["Winch/Gearbox"]
+        A --> B["Winch/Gearbox or Lead Screw"]
         B --> C["Motor (Generator Mode)"]
         C --> D["Motor Driver"]
         D --> E["Electrical Load/Battery"]
@@ -97,7 +91,7 @@ flowchart TD
 ### Vertical Motion Method
 Chose guided vertical mass because of the simple physics, clear energy path, and easy measurement.
 ### Transmission
-Chose winch and cable because it is compact, scalable, and cheap.
+Chose lead screw because it gives precise positioning, is self-locking, and compact.
 ### Motor Type
 Chose DC motor with regen because of its bidirectional energy flow.
 ### Control
