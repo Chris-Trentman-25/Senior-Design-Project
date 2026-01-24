@@ -2,13 +2,14 @@
 2. Maximum Allowed Tower Height: 0.5 m
 3. System must be floor mounted.
 4. Maximum mass limit: 50 kg
-5. Aluminum T-slot Extrusion
-6. Prefer single mass for simplicity.
-7. Floor-mounted tower
-8. Steel cable
-9. Brushed DC motor
-10. Battery
-11. Arduino-class MCU
-12. Limit Switches
-13. Supervised lab operation
-14. PC-based Interface
+5. Aluminum T-slot Extrusion.
+6. ACME lead screw.
+7. Prefer single mass for simplicity.
+8. Floor-mounted tower
+9. Steel cable
+10. Brushed DC motor
+11. Battery
+12. Arduino-class MCU
+13. Limit Switches
+14. Supervised lab operation
+15. PC-based Interface
