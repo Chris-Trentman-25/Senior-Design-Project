@@ -130,6 +130,21 @@ Vertical load of 392 N acts downward on the mass, transferring through the nut b
 - lower limit switch
 - mechanical hard stops
 - polycarbonate guarding
+# Lead Screw and Drive Sizing
+## Lead Screw Geometry
+- Diameter: 16 mm
+- Lead: 8 mm/rev
+- Thread: ACME
+- Length: ~700 mm
+## Torque Requirement
+$\tau = \frac{F \times lead}{2 \pi \times \eta} = \frac{392 \times 0.008}{2\pi \times 0.035} \approx 1.43 N \cdotp m$​
+With safety factor of 2, 
+$\tau_{design} = 2.9 N \cdotp m$
+## Required Speed
+- Linear speed: 0.045 m/s
+- Screw speed: $n = \frac{v}{lead} = \frac{0.045}{0.008} = 5.6 rev/s, n \approx 335 RPM$
+## Mechanical Power
+$P = \tau \omega \approx 50 W$
 # Lifting and Transmission Design
 ## Winch Geometry
 Single-drum winch with radius 50 mm
