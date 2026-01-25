@@ -4,12 +4,12 @@
 4. Maximum mass limit: 50 kg
 5. Aluminum T-slot Extrusion.
 6. ACME lead screw.
-7. Prefer single mass for simplicity.
-8. Floor-mounted tower
-9. Steel cable
-10. Brushed DC motor
-11. Battery
-12. Arduino-class MCU
-13. Limit Switches
-14. Supervised lab operation
-15. PC-based Interface
+7. Brushed DC motor.
+8. Prefer single mass for simplicity.
+9. Floor-mounted tower
+10. Steel cable
+12. Battery
+13. Arduino-class MCU
+14. Limit Switches
+15. Supervised lab operation
+16. PC-based Interface
