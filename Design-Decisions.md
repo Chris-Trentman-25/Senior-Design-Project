@@ -5,9 +5,10 @@
 5. Aluminum T-slot Extrusion.
 6. ACME lead screw.
 7. Brushed DC motor.
-8. Prefer single mass for simplicity.
-9. Floor-mounted tower
-10. Steel cable
+8. Resistive Dump Load.
+9. Prefer single mass for simplicity.
+10. Floor-mounted tower
+11. Steel cable
 12. Battery
 13. Arduino-class MCU
 14. Limit Switches
