@@ -6,11 +6,4 @@
 6. ACME lead screw.
 7. Brushed DC motor.
 8. Resistive Dump Load.
-9. Prefer single mass for simplicity.
-10. Floor-mounted tower
-11. Steel cable
-12. Battery
-13. Arduino-class MCU
-14. Limit Switches
-15. Supervised lab operation
-16. PC-based Interface
+
