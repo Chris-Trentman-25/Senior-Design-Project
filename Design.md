@@ -170,6 +170,30 @@ Chose motor rated at least $0.6 N \cdotp m$ continuous
 2. Gearbox back-drives motor
 3. Motor acts as generator
 4. Energy flows into battery or dump load
+# Power Electronics and Energy Flow
+## Electrical Architecture
+### Charging
+DC Power Supply → Motor Driver → DC Motor → Gearbox → Lead Screw → Mass
+### Discharging
+Mass → Lead Screw → Gearbox → DC Motor (Generator) → Motor Driver → Dump Resistor
+## Motor Driver Selection
+4-Quadrant DC motor Driver
+## Voltage and Current Estimates
+### Lift Mode
+At 24 V, $I \approx 3 A$
+### Regen Mode
+$I \approx 1.5-2.5 A$
+### Design
+- 10 A peak
+- 5 A continuous
+## Dump Load Design
+### Goal
+Safely absorb regenerated energy without overheating
+### Chosen Resistance
+$R = \frac{V}{I} = \frac{24}{2} = 12 \omega$
+### Power Rating
+P = VI = 48 W
+With safety factor at least 2, 100 W resistor.
 # Lifting and Transmission Design
 ## Winch Geometry
 Single-drum winch with radius 50 mm
