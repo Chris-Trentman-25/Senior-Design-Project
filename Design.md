@@ -190,7 +190,7 @@ $I \approx 1.5-2.5 A$
 ### Goal
 Safely absorb regenerated energy without overheating
 ### Chosen Resistance
-$R = \frac{V}{I} = \frac{24}{2} = 12 \omega$
+$R = \frac{V}{I} = \frac{24}{2} = 12 \Omega$
 ### Power Rating
 P = VI = 48 W
 With safety factor at least 2, 100 W resistor.
