@@ -145,6 +145,31 @@ $\tau_{design} = 2.9 N \cdotp m$
 - Screw speed: $n = \frac{v}{lead} = \frac{0.045}{0.008} = 5.6 rev/s, n \approx 335 RPM$
 ## Mechanical Power
 $P = \tau \omega \approx 50 W$
+# Motor Selection and Drive Strategy
+## Motor Torque and Speed Requirements
+- Design Torque: $3 N \cdotp m$
+- Speed: ~ 335 RPM
+## Gear Ratio Selection
+$G = \frac{target motor speed}{required screw speed} = \frac{2500}{335} \approx 7.5$
+So 8:1 gearbox
+## Motor Shaft Requirements
+$\tau_{motor} = \frac{3}{8} \approx 0.38 N \cdotp m$
+Chose motor rated at least $0.6 N \cdotp m$ continuous 
+## Motor Specs
+| Parameter    | Target          |
+|--------------|-----------------|
+| Type         | Brushed DC      |
+| Voltage      | 24 V            |
+| Rated Power  | 75 - 100 W      |
+| Rated Speed  | ~ 2500 RPM      |
+| Rated Torque | at least 0.6 Nm |
+| Gearbox      | 8:1 planetary   |
+| Encoder      | Quadrature      |
+## Regenerative Operation
+1. Mass back-drives lead screw
+2. Gearbox back-drives motor
+3. Motor acts as generator
+4. Energy flows into battery or dump load
 # Lifting and Transmission Design
 ## Winch Geometry
 Single-drum winch with radius 50 mm
