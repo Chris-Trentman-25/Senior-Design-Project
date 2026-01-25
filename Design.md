@@ -262,91 +262,17 @@ $E_{out} = \int V(t)I(t)dt$
 $\eta = \frac{E_{out}}{E_{in}}$
 # Safety and Protection System
 ## Hazard Analysis
-| Hazard               | Cause                        |
-|----------------------|------------------------------|
-| Falling mass         | Cable failure, brake failure |
-| Uncontrolled descent | Power loss, driver fault     |
-| Pinch/crush points   | Moving mass and winch        |
-| Electrical Shock     | Battery, exposed terminals   |
-| Unexpected Motion    | Software bug, EMI            |
-## Layered Safety Strategy
-Defense in depth:
-1. Mechanical safety
-2. Hardware safety
-3. Electrical safety
-4. Software safety
-## Mechanical Safety Features
-### Normally-Closed Mechanical Brake
-Holds the mass at any height, indefinitely.
-### Mechanical Hard Stops
-Hard stops must withstand full mass and dynamic load.
-### Guided Mass
-## Hardware Safety Systems
-### Emergency Stop
-Mushroom-style, latching, normally closed.
-1. Cuts power to motor driver
-2. De-energizes brake → brake engages
+| Hazard           | Mitigation              |
+|------------------|-------------------------|
+| Falling Mass     | Self-locking ACME Screw |
+| Overtravel       | Limit switches          |
+| Electrical Fault | Fuse and E-stop         |
+| Software Crash   | Hardware Limits         |
+| Overcurrent      | Driver Limits           |
+## Emergency Stop
+1. Cuts power to motor
+2. Disable Driver
 3. System enters E-STOP state
-E-stop bypasses the MCU entirely.
-### Limit Switches
-## Electrical Safety
-### Battery Protection
-- Battery Management System
-- Inline fuse near battery terminal
-- Insulated connectors
-### Wiring Practices
-- Strain relief on moving cables
-- No exposed high-current terminals
-- Grounded metal structure
-## Software Safety
-### Software Safety Checks
-- Max current threshold
-- Max motion time
-- Invalid state transitions
-- Sensor plausibility checks
-### Fault Behavior
-1. Motor command becomes zero
-2. Brake engages
-3. System enters FAULT state
-4. Manual reset required
-## Guarding and Operator Safety
-### Required Physical Measures
-- Clear polycarbonate guarding around:
-      Moving mass,
-      Winch and cable
-- Warning labels
-- Clearly marked safe zones
-### Operational Rules
-- No hands inside guarding during motion
-- One operator at controls
-- Supervisor present during testing
-# User Interface and Data Logging
-## UI Objectives
-1. Command system states
-2. Display live system status
-3. Visualize power and energy
-4. Log data for post-processing
-5. Support safe, supervised operation
-## PC-MCU Communication Architecture
-USB Serial Communication
-## Data Logging Strategy
-### Logged Variables
-| Variable            | Purpose       |
-|---------------------|---------------|
-| Timestamp           | Integration   |
-| State               | Context       |
-| Battery Voltage     | Energy        |
-| Motor Current       | Energy        |
-| Calculated Power    | Visualization |
-| Limit Switch Status | Verification  |
-### Logging Rate
-10-50 Hz
-## Efficiency Calculation Workflow
-### On Arduino
-Stream raw voltage/current/time data
-### On PC
-- Integrate power to compute:
-        Energy in,
-        Energy out
-- Compute round-trip efficiency
-- Plot results
+4. Manual Reset Required
+## Mechanical Hard Stops
+If software and limits fail, hard stops prevent damage. 
